@@ -11,7 +11,7 @@ Clone down this repository. You will need `node` and `npm` installed globally on
 This development used dependencies version as below:
 
 ```text
-Node: v18.17.1.
+Node: v18.17.1
 npm: v10.0.0
 ```
 
