@@ -4,14 +4,6 @@
 
 This project is currently in development for demo or POC.
 
-## Project Screen Shot(s)
-
-#### Example:   
-
-[ PRETEND SCREEN SHOT IS HERE ]
-
-[ PRETEND OTHER SCREEN SHOT IS HERE ]
-
 ## Installation and Setup Instructions
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
@@ -27,7 +19,7 @@ Installation:
 
 Configure the webphone_config.js in \mizu-webphone-receiver-react\public\webphonelibbasedir\webphone_config.js
 
-```json
+```javascript
 webphone_api.parameters = {
   serveraddress: "", //SET to your SIP server IP address, domain name or SRV DNS record (also set the :port if that is not the default 5060). Example: sip.myserveraddress.com:5070
   //proxyaddress: '',   //Optional SIP proxy address. Specify only if you must use an outbound SIP proxy which is different from the above serveraddress.
@@ -57,3 +49,5 @@ To Run Test Suite:
 To Visit App:
 
 `localhost:3001`
+
+## Project Screen Shot(s)
