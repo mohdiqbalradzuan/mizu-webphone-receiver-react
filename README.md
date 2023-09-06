@@ -12,10 +12,7 @@ This development used dependencies version as below:
 Node: v18.17.1.
 npm: v10.0.0
 
-First step after clone the repository:
-Installation:
-
-`npm install`  
+### First step after clone the repository:
 
 Configure the webphone_config.js in \mizu-webphone-receiver-react\public\webphonelibbasedir\webphone_config.js
 
@@ -38,13 +35,13 @@ webphone_api.parameters = {
 };
 ```
 
+Installation:
+
+`npm install`  
+
 To Start Server:
 
 `npm start`  
-
-To Run Test Suite:  
-
-`npm test`
 
 To Visit App:
 
