@@ -52,4 +52,5 @@ To Visit App:
 
 ## Project Screen Shot(s)
 
-![Landing page](https://github.com/mohdiqbalradzuan/mizu-webphone-receiver-react/blob/main/screenshots/Screenshot%202023-09-06%20160923.png?raw=true)
+![Homepage](https://github.com/mohdiqbalradzuan/mizu-webphone-receiver-react/blob/main/screenshots/Screenshot%202023-09-06%20160923.png?raw=true)
+![Homepage with incoming calls](https://github.com/mohdiqbalradzuan/mizu-webphone-receiver-react/blob/main/screenshots/Screenshot%202023-09-06%20161653.png?raw=true)
