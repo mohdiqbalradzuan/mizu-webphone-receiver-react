@@ -29,6 +29,7 @@ function App() {
 
     return function cleanup() {
       console.warn("App.js - Unmount component");
+      window.webphone_api.onCallStateChange(null);      
     };
   }, [refreshCount]); // Pass an empty array to only call the function once on mount.
 
