@@ -7,12 +7,12 @@
  */
 
 webphone_api.parameters = {
-  serveraddress: "", //SET to your SIP server IP address, domain name or SRV DNS record (also set the :port if that is not the default 5060). Example: sip.myserveraddress.com:5070
+  serveraddress: "my.nubitel.co", //SET to your SIP server IP address, domain name or SRV DNS record (also set the :port if that is not the default 5060). Example: sip.myserveraddress.com:5070
   //proxyaddress: '',   //Optional SIP proxy address. Specify only if you must use an outbound SIP proxy which is different from the above serveraddress.
   //webrtcserveraddress: '', //Optional websocket server URL if your VoIP server has WebRTC support. Example: wss://domain:8089/ws
   transport: -1, //Optional SIP transport protocol. -1: auto detect, 0: UDP, 1: TCP, 2: TLS (usually doesn't have to be set)
-  username: "", //Optional SIP account username (usually entered by the user, but for some special use cases or quick tests you might preset it here)
-  password: "", //Optional SIP account password (usually entered by the user, but for some special use cases or quick tests you might preset it here)
+  username: "jtZ1Ykg3p9jh9J", //Optional SIP account username (usually entered by the user, but for some special use cases or quick tests you might preset it here)
+  password: "QrAv1mKJFk0VMt", //Optional SIP account password (usually entered by the user, but for some special use cases or quick tests you might preset it here)
   //textmessaging: -1, //just an example parameter which sets the enable/disable chat/sms parameter to its default value
   loglevel: 5, //5 means detailed logs. It might be set it to 1 in production. The logs can be viewed in the browser console.
 
