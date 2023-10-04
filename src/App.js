@@ -28,13 +28,13 @@ function App() {
     loadWebPhone();
 
     return function cleanup() {
-      console.warn("App.js - Unmount component");
+      console.warn(`${process.env.REACT_APP_WEBSITE_NAME} - Unmount component`);
       window.webphone_api.onCallStateChange(null);
     };
   }, [refreshCount]); // Pass an empty array to only call the function once on mount.
 
   function loadWebPhone() {
-    console.warn("App.js - webphone_api loaded");
+    console.warn(`${process.env.REACT_APP_WEBSITE_NAME} - webphone_api loaded`);
     window.webphone_api.onAppStateChange(function (state) {
       if (state === "loaded") {
         //Webphone library is fully loaded here, don't touch any API before this event
@@ -49,13 +49,13 @@ function App() {
         callid = callid.replace("]", "");
         var x_c_callid = "";
 
-        if (direction === 2 && (event === "ringing")) {
-          window.webphone_api.getsipheader("X-C-Call-ID", function (xcallid) {
-            x_c_callid = xcallid;
-          });
+        window.webphone_api.getsipheader("X-C-Call-ID", function (xcallid) {
+          x_c_callid = xcallid;
+        });
 
+        if (direction === 2 && event === "ringing") {
           console.warn(
-            `PSIM - Incoming call PeerName: ${peername}, DisplayName: ${peerdisplayname}, Line No: ${line}, CallId: ${callid}, X-C-CallId: ${x_c_callid}. Event: ${event} - Direction: ${direction}`
+            `${process.env.REACT_APP_WEBSITE_NAME} PSIM - Incoming call PeerName: ${peername}, DisplayName: ${peerdisplayname}, Line No: ${line}, CallId: ${callid}, X-C-CallId: ${x_c_callid}. Event: ${event} - Direction: ${direction}`
           );
 
           toast.warn(`Incoming call from ${peername}`, {
@@ -80,14 +80,14 @@ function App() {
             x_c_callid: x_c_callid,
           });
         } else if (event === "disconnected") {
-          // call disconnect
-          //you might hide Accept, Reject buttons by something like this:
           console.warn(
-            `PSIM - Call disconnected PeerName: ${peername}, DisplayName: ${peerdisplayname}, Line No: ${line}, CallId: ${callid}`
+            `${process.env.REACT_APP_WEBSITE_NAME} PSIM - Call disconnected PeerName: ${peername}, DisplayName: ${peerdisplayname}, Line No: ${line}, CallId: ${callid}, X-C-CallId: ${x_c_callid}. Event: ${event} - Direction: ${direction}`
           );
 
           console.warn(
-            `PSIM - Incoming calls list: ${JSON.stringify(
+            `${
+              process.env.REACT_APP_WEBSITE_NAME
+            } PSIM - Incoming calls list: ${JSON.stringify(
               incomingCallsRef.current
             )}`
           );

@@ -357,6 +357,34 @@ function onStart(event)
             {
                 webphone_api.$('#a_newuser').hide();
             }
+
+            if (webphone_api.common.IsWindowsSoftphone() === true)
+            {
+                var qrcode_login = 0;
+                if(webphone_api.common.GetParameter('qrcode_login').length > 0)
+                {
+                    qrcode_login = webphone_api.common.GetParameterInt('qrcode_login', 0);
+                }
+                else
+                {
+                    qrcode_login =  webphone_api.common.GetConfigInt('qrcode_login', 0)
+                }
+
+
+                if (qrcode_login == 1)
+                {
+                    if (usrtmp.length < 1 || pwdtmp.length < 1)
+                    {
+                        webphone_api.$('#lp_btn_custom').html(webphone_api.stringres.get('btn_qrcode'));
+                        webphone_api.$('#lp_btn_custom').show();
+                    }
+                }
+                else if (qrcode_login == 2)
+                {
+                    webphone_api.$('#lp_btn_custom').html(webphone_api.stringres.get('btn_qrcode'));
+                    webphone_api.$('#lp_btn_custom').show();
+                }
+            }
         }
         
         var forgotpasswordurl = webphone_api.common.GetConfig('forgotpasswordurl');
@@ -4047,6 +4075,9 @@ function OnListItemClick (id) // :no return value
                 srvaddrpart = '<span id="setting_item_srvaddrpart">' + sdsrv + '</span>';
                 widthclass = 'data-wrapper-class="setting_item_input_class"';
             }
+
+            var serverhelp = '<button id="btn_srvhelp" class="btn_nexttoinput ui-btn ui-btn-corner-all ui-btn-b noshadow"><img src="' + webphone_api.common.GetElementSource() + 'images/icon_help_mark.png"></button>';
+            if (webphone_api.common.GetConfigInt('demoversion', 1) === 0) serverhelp = '';
             
 
             var template = '' +
@@ -4060,8 +4091,7 @@ function OnListItemClick (id) // :no return value
         '<span>' + settComment + '</span>' +
         '<div style="clear: both;"><!--//--></div>' +
         '<input type="text" ' + widthclass + ' id="setting_item_input" name="setting_item" data-theme="a" autocapitalize="off"/>' +
-        srvaddrpart +
-        '<button id="btn_srvhelp" class="btn_nexttoinput ui-btn ui-btn-corner-all ui-btn-b noshadow"><img src="' + webphone_api.common.GetElementSource() + 'images/icon_help_mark.png"></button>' +
+        srvaddrpart + serverhelp +
     '</div>' +
     '<div data-role="footer" data-theme="b" class="adialog_footer">' +
         '<a href="javascript:;" id="adialog_positive" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b adialog_2button" data-rel="back" data-transition="flow">' + webphone_api.stringres.get('btn_ok') + '</a>' +
@@ -5244,14 +5274,28 @@ function OnNewUserClicked()
 
     } catch(err) { webphone_api.common.PutToDebugLogException(2, "_settings: OnNewUserClicked", err); }
 }
-
-function CustomBtn()
+var trigerredQ = false; // handle multiple clicks
+function CustomBtn() //favafone newuser or QR code login
 {
     try{
 //BRANDSTART
     if (webphone_api.common.GetConfigInt('brandid', -1) === 50) // favafone
     {
         webphone_api.$.mobile.changePage("#page_newuser", { transition: "pop", role: "page" });
+    }
+    else
+    {
+        if (trigerredQ) { return; }
+
+        trigerredQ = true;
+        setTimeout(function ()
+        {
+            trigerredQ = false;
+        }, 1000);
+
+        webphone_api.common.PutToDebugLog(3, 'EVENT, settings button QRcode login clicked b');
+
+        QRcodeLogin();
     }
 //BRANDEND
     } catch(err) { webphone_api.common.PutToDebugLogException(2, "_settings: CustomBtn", err); }

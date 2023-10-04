@@ -21,4 +21,5 @@ webphone_api.parameters = {
   //Comma is NOT needed after the last parameter.
 
   beeponincoming: 0,
+  needunregister: false,
 };
