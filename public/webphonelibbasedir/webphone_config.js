@@ -20,6 +20,7 @@ webphone_api.parameters = {
   //See the documentation for the complete list of available settings ("Parameters" chapter) and insert any other parameters here if needed.
   //Comma is NOT needed after the last parameter.
 
-  beeponincoming: 0,
+  beeponincoming: 1,
   needunregister: false,
+  playring: 0,
 };

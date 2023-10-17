@@ -1,0 +1,8 @@
+export const config = {
+    ENVIRONMENT: process.env.REACT_APP_ENV,
+    WEBAPI_URL: process.env.REACT_APP_WEBAPI_URL,
+    WEBAPP_URL: process.env.REACT_APP_WEBAPP_URL,
+    IDENTITYSERVER_URL: process.env.REACT_APP_IDENTITYSERVER_URL,
+    IDENTITY_CLIENT_NAME: process.env.REACT_APP_IDENTITY_CLIENT_NAME,
+  };
+  

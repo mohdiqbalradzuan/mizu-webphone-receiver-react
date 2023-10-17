@@ -5,6 +5,10 @@ import Clipboard from "react-clipboard.js";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
+import {
+  postIncomingCallToPsim,
+} from "./services/apiService";
+
 function App() {
   const [refreshCount, setRefreshCount] = useState(0);
   const [incomingCalls, setIncomingCalls] = useState([]);
@@ -79,6 +83,10 @@ function App() {
             callerId: callid,
             x_c_callid: x_c_callid,
           });
+
+          // Call API to create case here
+          postIncomingCallToPsim(peername, x_c_callid);
+
         } else if (event === "disconnected") {
           console.warn(
             `${process.env.REACT_APP_WEBSITE_NAME} PSIM - Call disconnected PeerName: ${peername}, DisplayName: ${peerdisplayname}, Line No: ${line}, CallId: ${callid}, X-C-CallId: ${x_c_callid}. Event: ${event} - Direction: ${direction}`

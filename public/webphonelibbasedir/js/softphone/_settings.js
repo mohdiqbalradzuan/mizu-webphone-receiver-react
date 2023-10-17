@@ -4077,8 +4077,8 @@ function OnListItemClick (id) // :no return value
             }
 
             var serverhelp = '<button id="btn_srvhelp" class="btn_nexttoinput ui-btn ui-btn-corner-all ui-btn-b noshadow"><img src="' + webphone_api.common.GetElementSource() + 'images/icon_help_mark.png"></button>';
-            if (webphone_api.common.GetConfigInt('demoversion', 1) === 0) serverhelp = '';
-            
+            if (webphone_api.global.usestorage == false) serverhelp = '';
+
 
             var template = '' +
 '<div id="settings_type_server" data-role="popup" class="ui-content messagePopup" data-overlay-theme="a" data-theme="a" style="max-width:' + popupWidth + 'px;">' +
@@ -4257,8 +4257,16 @@ function OnListItemClick (id) // :no return value
                 
 //--                var btn_findprovider = '<button id="btn_srvhelp" class="ui-btn ui-btn-corner-all ui-btn-b noshadow">' + webphone_api.stringres.get('help_provider') + '</button>';
 //--                https://www.mizu-voip.com/VoIPServiceProviders.aspx
-                
-                webphone_api.common.AlertDialog(webphone_api.stringres.get('help'), webphone_api.stringres.get('srvaddr_help') + btn_findprovider, null, null, false);
+
+                if (webphone_api.global.usestorage == true)
+                {
+                    //demo version
+                    webphone_api.common.AlertDialog(webphone_api.stringres.get('help'), webphone_api.stringres.get('srvaddr_help_cust'), null, null, false);
+                }
+                else
+                {
+                    webphone_api.common.AlertDialog(webphone_api.stringres.get('help'), webphone_api.stringres.get('srvaddr_help') + btn_findprovider, null, null, false);
+                }
             });
         }
     }
